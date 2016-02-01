@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RMx-3f-FxP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RMx-3f-FxP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -8,7 +8,6 @@
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
@@ -19,6 +18,7 @@
                         <segue destination="7bK-jq-Zjz" kind="relationship" relationship="rootViewController" id="tsl-Nk-0bq"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-838" y="-631"/>
         </scene>
@@ -71,6 +71,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="81z-GS-uVJ" kind="show" id="LBc-cG-uoP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2YF-Wv-PnF" style="IBUITableViewCellStyleDefault" id="hdx-1w-ySx">
+                                        <rect key="frame" x="0.0" y="187" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hdx-1w-ySx" id="pCc-5f-f2u">
+                                            <rect key="frame" x="0.0" y="0.0" width="267" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bind and Dispose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2YF-Wv-PnF">
+                                                    <rect key="frame" x="15" y="0.0" width="250" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Et8-Ax-hdi" kind="show" id="VUq-FV-TGw"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -206,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="-81" y="-1005"/>
         </scene>
-        <!--Message Send View Controller-->
+        <!--送信画面-->
         <scene sceneID="GGJ-yt-bLg">
             <objects>
                 <viewController id="81z-GS-uVJ" customClass="MessageSendViewController" customModule="BondTutorial" customModuleProvider="target" sceneMemberID="viewController">
@@ -259,6 +279,7 @@
                             <constraint firstAttribute="trailing" secondItem="y3p-Q6-zbU" secondAttribute="trailing" constant="20" id="qwA-nF-qXT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="送信画面" id="hQW-8S-vok"/>
                     <connections>
                         <outlet property="messageCountLabel" destination="y3p-Q6-zbU" id="zXW-Un-6G9"/>
                         <outlet property="messageTextView" destination="2pu-Y4-2EX" id="jbK-zb-uYy"/>
@@ -268,6 +289,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="428-l7-LjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-81" y="-631"/>
+        </scene>
+        <!--Bind and Dispose-->
+        <scene sceneID="8sH-WP-yqn">
+            <objects>
+                <viewController id="Et8-Ax-hdi" customClass="BindDisposeViewController" customModule="BondTutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QPX-xy-W1V"/>
+                        <viewControllerLayoutGuide type="bottom" id="Awv-x1-GPz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gKv-jU-4Th">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-gb-mKQ">
+                                <rect key="frame" x="20" y="84" width="260" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kWW-tB-Hpq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uppercase String" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFA-YV-zts">
+                                <rect key="frame" x="20" y="122" width="260" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="RVa-KT-9ns"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-9J-trv">
+                                <rect key="frame" x="20" y="151" width="260" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="oni-Hf-gzQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Bind"/>
+                                <connections>
+                                    <action selector="bindAction:" destination="Et8-Ax-hdi" eventType="touchUpInside" id="hVf-hf-Qz4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMZ-h1-OyM">
+                                <rect key="frame" x="20" y="191" width="260" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Okf-FS-0td"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Dispose">
+                                    <color key="titleColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="disposeAction:" destination="Et8-Ax-hdi" eventType="touchUpInside" id="eaq-6q-lCl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YMZ-h1-OyM" firstAttribute="leading" secondItem="gKv-jU-4Th" secondAttribute="leading" constant="20" id="24d-RM-aqZ"/>
+                            <constraint firstItem="Jv7-gb-mKQ" firstAttribute="leading" secondItem="gKv-jU-4Th" secondAttribute="leading" constant="20" id="5lt-ol-ed1"/>
+                            <constraint firstAttribute="trailing" secondItem="bsY-9J-trv" secondAttribute="trailing" constant="20" id="9Ps-g8-0ag"/>
+                            <constraint firstAttribute="trailing" secondItem="YMZ-h1-OyM" secondAttribute="trailing" constant="20" id="Gaj-BV-nfW"/>
+                            <constraint firstItem="bsY-9J-trv" firstAttribute="leading" secondItem="gKv-jU-4Th" secondAttribute="leading" constant="20" id="TAN-e7-bpU"/>
+                            <constraint firstItem="KFA-YV-zts" firstAttribute="top" secondItem="Jv7-gb-mKQ" secondAttribute="bottom" constant="8" id="UJg-ih-5L8"/>
+                            <constraint firstItem="bsY-9J-trv" firstAttribute="top" secondItem="KFA-YV-zts" secondAttribute="bottom" constant="8" id="ZbE-a8-lEL"/>
+                            <constraint firstItem="YMZ-h1-OyM" firstAttribute="top" secondItem="bsY-9J-trv" secondAttribute="bottom" constant="10" id="bd3-Qd-xqY"/>
+                            <constraint firstAttribute="trailing" secondItem="KFA-YV-zts" secondAttribute="trailing" constant="20" id="hPe-YE-dMA"/>
+                            <constraint firstItem="Jv7-gb-mKQ" firstAttribute="top" secondItem="QPX-xy-W1V" secondAttribute="bottom" constant="20" id="k0J-Wv-Zho"/>
+                            <constraint firstAttribute="trailing" secondItem="Jv7-gb-mKQ" secondAttribute="trailing" constant="20" id="kpk-TZ-P43"/>
+                            <constraint firstItem="KFA-YV-zts" firstAttribute="leading" secondItem="gKv-jU-4Th" secondAttribute="leading" constant="20" id="lvY-A9-QOE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bind and Dispose" id="UKZ-Fj-hG2"/>
+                    <connections>
+                        <outlet property="bindButton" destination="bsY-9J-trv" id="75G-kT-0NS"/>
+                        <outlet property="disposeButton" destination="YMZ-h1-OyM" id="yJk-QQ-bCy"/>
+                        <outlet property="textField" destination="Jv7-gb-mKQ" id="bwV-8h-RjM"/>
+                        <outlet property="upperCaseLabel" destination="KFA-YV-zts" id="oN7-sG-FQg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NsI-Vj-Kks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="-217"/>
         </scene>
     </scenes>
 </document>
