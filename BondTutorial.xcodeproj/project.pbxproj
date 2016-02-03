@@ -11,6 +11,12 @@
 		C27506201C5F8B6900C71520 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C275061F1C5F8B6900C71520 /* Main.storyboard */; };
 		C27506221C5F8FB800C71520 /* BindDisposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27506211C5F8FB800C71520 /* BindDisposeViewController.swift */; };
 		C27506241C5F907100C71520 /* BindDisposeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27506231C5F907100C71520 /* BindDisposeVM.swift */; };
+		C2809E961C60DD39003DEB8F /* TextInputTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2809E951C60DD39003DEB8F /* TextInputTableCell.swift */; };
+		C2809E981C60DE01003DEB8F /* SwitchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2809E971C60DE01003DEB8F /* SwitchTableCell.swift */; };
+		C2809E9A1C60DFFA003DEB8F /* TextInputTableCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2809E991C60DFFA003DEB8F /* TextInputTableCellVM.swift */; };
+		C2809E9C1C60E093003DEB8F /* SwitchTableCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2809E9B1C60E093003DEB8F /* SwitchTableCellVM.swift */; };
+		C2809E9E1C60E109003DEB8F /* BasicTableCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2809E9D1C60E109003DEB8F /* BasicTableCellVM.swift */; };
+		C2809EA01C60E180003DEB8F /* TableViewCellBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2809E9F1C60E180003DEB8F /* TableViewCellBindViewController.swift */; };
 		C29CB6341C5C8AA000212AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29CB6331C5C8AA000212AF7 /* AppDelegate.swift */; };
 		C29CB63D1C5C8AA000212AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29CB63C1C5C8AA000212AF7 /* Assets.xcassets */; };
 		C29CB6401C5C8AA000212AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29CB63E1C5C8AA000212AF7 /* LaunchScreen.storyboard */; };
@@ -38,6 +44,12 @@
 		C275061F1C5F8B6900C71520 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C27506211C5F8FB800C71520 /* BindDisposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindDisposeViewController.swift; sourceTree = "<group>"; };
 		C27506231C5F907100C71520 /* BindDisposeVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindDisposeVM.swift; sourceTree = "<group>"; };
+		C2809E951C60DD39003DEB8F /* TextInputTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableCell.swift; sourceTree = "<group>"; };
+		C2809E971C60DE01003DEB8F /* SwitchTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableCell.swift; sourceTree = "<group>"; };
+		C2809E991C60DFFA003DEB8F /* TextInputTableCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableCellVM.swift; sourceTree = "<group>"; };
+		C2809E9B1C60E093003DEB8F /* SwitchTableCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableCellVM.swift; sourceTree = "<group>"; };
+		C2809E9D1C60E109003DEB8F /* BasicTableCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableCellVM.swift; sourceTree = "<group>"; };
+		C2809E9F1C60E180003DEB8F /* TableViewCellBindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBindViewController.swift; sourceTree = "<group>"; };
 		C29CB6301C5C8AA000212AF7 /* BondTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BondTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29CB6331C5C8AA000212AF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C29CB63C1C5C8AA000212AF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +100,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C2809E941C60DD12003DEB8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2809E951C60DD39003DEB8F /* TextInputTableCell.swift */,
+				C2809E971C60DE01003DEB8F /* SwitchTableCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C29CB6271C5C8AA000212AF7 = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +154,7 @@
 		C29CB6551C5C8E8C00212AF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C29CB65A1C5DB80800212AF7 /* View */,
+				C2809E941C60DD12003DEB8F /* View */,
 				C29CB6591C5DB7ED00212AF7 /* Storyboard */,
 				C29CB6561C5DB69800212AF7 /* ViewController */,
 			);
@@ -146,6 +167,7 @@
 				C29CB6571C5DB7D700212AF7 /* SignUpViewController.swift */,
 				C29CB65F1C5DF9C400212AF7 /* MessageSendViewController.swift */,
 				C27506211C5F8FB800C71520 /* BindDisposeViewController.swift */,
+				C2809E9F1C60E180003DEB8F /* TableViewCellBindViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -158,19 +180,15 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		C29CB65A1C5DB80800212AF7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		C29CB65B1C5DB81B00212AF7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				C29CB65D1C5DBA8600212AF7 /* SignUpVM.swift */,
 				C29CB6611C5DFBEB00212AF7 /* MessageSendVM.swift */,
 				C27506231C5F907100C71520 /* BindDisposeVM.swift */,
+				C2809E991C60DFFA003DEB8F /* TextInputTableCellVM.swift */,
+				C2809E9B1C60E093003DEB8F /* SwitchTableCellVM.swift */,
+				C2809E9D1C60E109003DEB8F /* BasicTableCellVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -327,11 +345,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2809E961C60DD39003DEB8F /* TextInputTableCell.swift in Sources */,
+				C2809E9A1C60DFFA003DEB8F /* TextInputTableCellVM.swift in Sources */,
+				C2809E981C60DE01003DEB8F /* SwitchTableCell.swift in Sources */,
 				C29CB6601C5DF9C400212AF7 /* MessageSendViewController.swift in Sources */,
 				C29CB6621C5DFBEB00212AF7 /* MessageSendVM.swift in Sources */,
+				C2809E9C1C60E093003DEB8F /* SwitchTableCellVM.swift in Sources */,
+				C2809E9E1C60E109003DEB8F /* BasicTableCellVM.swift in Sources */,
 				C29CB6581C5DB7D700212AF7 /* SignUpViewController.swift in Sources */,
 				C29CB65E1C5DBA8600212AF7 /* SignUpVM.swift in Sources */,
 				C27506241C5F907100C71520 /* BindDisposeVM.swift in Sources */,
+				C2809EA01C60E180003DEB8F /* TableViewCellBindViewController.swift in Sources */,
 				C29CB6341C5C8AA000212AF7 /* AppDelegate.swift in Sources */,
 				C27506221C5F8FB800C71520 /* BindDisposeViewController.swift in Sources */,
 			);
