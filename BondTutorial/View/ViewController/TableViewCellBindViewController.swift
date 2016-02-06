@@ -26,14 +26,11 @@ class TableViewCellBindViewController: UITableViewController {
         
         var cellVMList = [TextInputTableCellVM]()
         for _ in 0..<5 {
-            
             for _ in 0..<5 {
                 cellVMList.append(TextInputTableCellVM())
             }
-            
             tableData.append(cellVMList)
             cellVMList.removeAll()
-            
         }
         
     }
@@ -50,67 +47,20 @@ class TableViewCellBindViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let vm = tableData[indexPath.section][indexPath.row]
-        print("---------------- generateVM ----------------")
-        print("vmValue: \(vm.inputText.value!)")
-        print("vm.inputText.deinitDisposable.disposables.count: \(vm.inputText.deinitDisposable.enableDisposableCount())")
-        print("vm: \(vm.inputText.observers)")
-        
-        vm.inputText.deinitDisposable.dispose()
-        
-        print("-------- ViewController -------------")
-        print("section:\(indexPath.section)  row:\(indexPath.row)")
-        print("vmValue: \(vm.inputText.value!)")
-        print("vm.inputText.deinitDisposable.disposables.count: \(vm.inputText.deinitDisposable.enableDisposableCount())")
-        print("vm: \(vm.inputText.observers)")
         let cell = tableView.dequeueReusableCellWithIdentifier("TextInputCell", forIndexPath: indexPath) as! TextInputTableCell
-        print("-------------- beforeBind -------------")
-        print("vm.inputText.deinitDisposable.disposables.count: \(vm.inputText.deinitDisposable.enableDisposableCount())")
-        print("vm: \(vm.inputText.observers)")
+        vm.itemLabelText.bidirectionalBindTo(cell.itemLabel.bnd_text).disposeIn(cell.bnd_bag)
+        vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text).disposeIn(cell.bnd_bag)
         
-//        vm.itemLabelText.bindTo(cell.itemLabel.bnd_text).disposeIn(cell.bnd_bag)
-//        vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text).disposeIn(cell.bnd_bag)
-//        vm.itemLabelText.bindTo(cell.itemLabel.bnd_text)
-        vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text)
-        
-//        print("------------ cellforrow -----------")
-//        print("section:\(indexPath.section)  row:\(indexPath.row)")
-//        print("cell.itemTextField.bnd_text.value: \(cell.itemTextField.bnd_text.value)")
-//        print("cell.itemTextField.bnd_text.deinitDisposable.disposables.count: \(cell.itemTextField.bnd_text.deinitDisposable.enableDisposableCount())")
-//        print("cell: \(cell.itemTextField.bnd_text.observers)")
-//        print("vm.inputText.value: \(vm.inputText.value)")
-        
-         print("-------- bind --------")
-        print("------ afterReuse VireController --------")
-        print("vm.inputText.deinitDisposable.disposables.count: \(vm.inputText.deinitDisposable.enableDisposableCount())")
-        print("vm: \(vm.inputText.observers)")
-        print("")
-        print("cell.itemTextField.bnd_text.deinitDisposable.enableDisposableCount(): \(cell.itemTextField.bnd_text.deinitDisposable.enableDisposableCount())")
-        print("cell.itemTextField.bnd_text.observers: \(cell.itemTextField.bnd_text.observers)")
-        
-//        vm.inputText.deinitDisposable.dispose()
-//        cell.itemTextField.bnd_text.deinitDisposable.dispose()
-        
-//        print("------------- dispose --------------")
-//        print("section:\(indexPath.section)  row:\(indexPath.row)")
-//        print("cell.itemTextField.bnd_text.value: \(cell.itemTextField.bnd_text.value)")
-//        print("cell.itemTextField.bnd_text.deinitDisposable.disposables.count: \(cell.itemTextField.bnd_text.deinitDisposable.enableDisposableCount())")
-//        print("cell: \(cell.itemTextField.bnd_text.observers)")
-//        print("vm.inputText.value: \(vm.inputText.value)")
-//        print("vm.inputText.deinitDisposable.disposables.count: \(vm.inputText.deinitDisposable.enableDisposableCount())")
-//        print("vm: \(vm.inputText.observers)")
-        
-        
-//        cell.itemLabel.bnd_text.bidirectionalBindTo(vm.itemLabelText)
-//        cell.itemTextField.bnd_text.bidirectionalBindTo(vm.inputText)
         return cell
         
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        tableData[indexPath.section][indexPath.row].outPutValue()
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TextInputTableCell
-        print("cell:\(cell.itemTextField.bnd_text.value)")
+        let alertController = UIAlertController(title: "vm.inputText", message: "\(tableData[indexPath.section][indexPath.row].inputText.value!)", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(action)
+        self.navigationController?.presentViewController(alertController, animated: true, completion: nil)
         
     }
 
