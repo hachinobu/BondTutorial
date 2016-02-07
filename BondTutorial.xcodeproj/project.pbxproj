@@ -25,6 +25,8 @@
 		C29CB65E1C5DBA8600212AF7 /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29CB65D1C5DBA8600212AF7 /* SignUpVM.swift */; };
 		C29CB6601C5DF9C400212AF7 /* MessageSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29CB65F1C5DF9C400212AF7 /* MessageSendViewController.swift */; };
 		C29CB6621C5DFBEB00212AF7 /* MessageSendVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29CB6611C5DFBEB00212AF7 /* MessageSendVM.swift */; };
+		C2BD3BA81C68C02400E320DB /* TableViewDataDetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BD3BA61C68C02400E320DB /* TableViewDataDetailViewcontroller.swift */; };
+		C2BD3BA91C68C02400E320DB /* TableViewFromObservableArrayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BD3BA71C68C02400E320DB /* TableViewFromObservableArrayTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		C29CB65D1C5DBA8600212AF7 /* SignUpVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		C29CB65F1C5DF9C400212AF7 /* MessageSendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSendViewController.swift; sourceTree = "<group>"; };
 		C29CB6611C5DFBEB00212AF7 /* MessageSendVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSendVM.swift; sourceTree = "<group>"; };
+		C2BD3BA61C68C02400E320DB /* TableViewDataDetailViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataDetailViewcontroller.swift; sourceTree = "<group>"; };
+		C2BD3BA71C68C02400E320DB /* TableViewFromObservableArrayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFromObservableArrayTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 		C29CB6561C5DB69800212AF7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C2BD3BA61C68C02400E320DB /* TableViewDataDetailViewcontroller.swift */,
+				C2BD3BA71C68C02400E320DB /* TableViewFromObservableArrayTableViewController.swift */,
 				C29CB6571C5DB7D700212AF7 /* SignUpViewController.swift */,
 				C29CB65F1C5DF9C400212AF7 /* MessageSendViewController.swift */,
 				C27506211C5F8FB800C71520 /* BindDisposeViewController.swift */,
@@ -346,10 +352,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2809E961C60DD39003DEB8F /* TextInputTableCell.swift in Sources */,
+				C2BD3BA81C68C02400E320DB /* TableViewDataDetailViewcontroller.swift in Sources */,
 				C2809E9A1C60DFFA003DEB8F /* TextInputTableCellVM.swift in Sources */,
 				C2809E981C60DE01003DEB8F /* SwitchTableCell.swift in Sources */,
 				C29CB6601C5DF9C400212AF7 /* MessageSendViewController.swift in Sources */,
 				C29CB6621C5DFBEB00212AF7 /* MessageSendVM.swift in Sources */,
+				C2BD3BA91C68C02400E320DB /* TableViewFromObservableArrayTableViewController.swift in Sources */,
 				C2809E9C1C60E093003DEB8F /* SwitchTableCellVM.swift in Sources */,
 				C2809E9E1C60E109003DEB8F /* BasicTableCellVM.swift in Sources */,
 				C29CB6581C5DB7D700212AF7 /* SignUpViewController.swift in Sources */,

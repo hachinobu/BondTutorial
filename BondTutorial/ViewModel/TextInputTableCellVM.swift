@@ -13,9 +13,5 @@ class TextInputTableCellVM {
     
     let itemLabelText = Observable<String?>("自由入力")
     let inputText = Observable<String?>("")
-    
-    func outPutValue() {
-        print(inputText.value)
-    }
-    
+        
 }
