@@ -11,6 +11,10 @@ import Bond
 
 class BasicTableCellVM {
     
-    let labelText = Observable<String?>("あああああ")
+    let labelText = Observable<String?>("")
+    
+    init(labelText: String) {
+        self.labelText.next(labelText)
+    }
     
 }

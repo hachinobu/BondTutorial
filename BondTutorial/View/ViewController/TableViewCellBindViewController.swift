@@ -26,14 +26,11 @@ class TableViewCellBindViewController: UITableViewController {
         
         var cellVMList = [TextInputTableCellVM]()
         for _ in 0..<5 {
-            
             for _ in 0..<5 {
                 cellVMList.append(TextInputTableCellVM())
             }
-            
             tableData.append(cellVMList)
             cellVMList.removeAll()
-            
         }
         
     }
@@ -51,17 +48,19 @@ class TableViewCellBindViewController: UITableViewController {
         
         let vm = tableData[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("TextInputCell", forIndexPath: indexPath) as! TextInputTableCell
-//        vm.itemLabelText.bindTo(cell.itemLabel.bnd_text).disposeIn(cell.bnd_bag)
-//        vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text).disposeIn(cell.bnd_bag)
-        let dispose = vm.itemLabelText.bindTo(cell.itemLabel.bnd_text)
-        let dispose2 = vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text)
-        print(dispose)
-        print(dispose2)
+        vm.itemLabelText.bidirectionalBindTo(cell.itemLabel.bnd_text).disposeIn(cell.bnd_bag)
+        vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text).disposeIn(cell.bnd_bag)
         
-        
-//        cell.itemLabel.bnd_text.bidirectionalBindTo(vm.itemLabelText)
-//        cell.itemTextField.bnd_text.bidirectionalBindTo(vm.inputText)
         return cell
+        
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let alertController = UIAlertController(title: "vm.inputText", message: "\(tableData[indexPath.section][indexPath.row].inputText.value!)", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(action)
+        self.navigationController?.presentViewController(alertController, animated: true, completion: nil)
         
     }
 

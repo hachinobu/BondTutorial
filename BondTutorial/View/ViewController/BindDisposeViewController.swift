@@ -37,6 +37,7 @@ class BindDisposeViewController: UIViewController {
     }
     
     @IBAction func disposeAction(sender: AnyObject) {
+        //dispose()するとisDisposedがtrueになるので今後compositeDisposableにaddDisposableしても追加されない
         compositeDisposable.dispose()
     }
 
