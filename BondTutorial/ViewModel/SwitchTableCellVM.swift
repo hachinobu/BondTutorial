@@ -11,7 +11,7 @@ import Bond
 
 class SwitchTableCellVM {
     
-    let itemLabelText = Observable<String?>("独身ですか？")
+    let itemLabelText = Observable<String?>("SwiftBond好きですか？")
     let itemSwitchOn = Observable<Bool>(false)
     
 }
