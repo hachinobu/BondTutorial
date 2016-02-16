@@ -27,10 +27,31 @@ class TableViewFromObservableArrayTableViewController: UITableViewController {
     }
     
     func addData() {
-        //このやり方だと即時更新され3回reloadが走る
+        
+//        tableData.performBatchUpdates { (p) -> Void in
+//            p[0].performBatchUpdates { (data) -> Void in
+////                data.removeAtIndex(2)
+//                data.removeAtIndex(0)
+////                data.append(BasicTableCellVM(labelText: "Add Row2"))
+//                data.insert(BasicTableCellVM(labelText: "Add Row3"), atIndex: 1)
+////                data.append(BasicTableCellVM(labelText: "Add Row2"))
+////                data.append(BasicTableCellVM(labelText: "Add Row3"))
+//            }
+//        }
+        
+//        //このやり方だと即時更新され3回reloadが走る
 //        tableData[0].append(BasicTableCellVM(labelText: "Add Row"))
 //        tableData[0].append(BasicTableCellVM(labelText: "Add Row1"))
 //        tableData[0].append(BasicTableCellVM(labelText: "Add Row2"))
+        
+        tableData[0].performBatchUpdates { (tableData) -> Void in
+            tableData.append(BasicTableCellVM(labelText: "Add Row"))
+            tableData.removeAtIndex(1)
+            tableData.append(BasicTableCellVM(labelText: "Add Row2"))
+            tableData.removeAtIndex(0)
+            tableData.append(BasicTableCellVM(labelText: "Add Row3"))
+        }
+        
         
         //performBatchUpdatesを使用するとデータが全て更新されてからreloadが1度走る
 //        tableData.performBatchUpdates { (tableData) -> Void in
@@ -41,11 +62,11 @@ class TableViewFromObservableArrayTableViewController: UITableViewController {
 //            }
 //        }
         
-        tableData.performBatchUpdates { (tableData) -> Void in
-            tableData.insert(ObservableArray([BasicTableCellVM(labelText: "Add Section")]), atIndex: 0)
-            tableData.insert(ObservableArray([BasicTableCellVM(labelText: "Add Section")]), atIndex: 0)
-            tableData.insert(ObservableArray([BasicTableCellVM(labelText: "Add Section")]), atIndex: 0)
-        }
+//        tableData.performBatchUpdates { (tableData) -> Void in
+//            tableData.insert(ObservableArray([BasicTableCellVM(labelText: "Add Section")]), atIndex: 0)
+//            tableData.insert(ObservableArray([BasicTableCellVM(labelText: "Add Section")]), atIndex: 0)
+//            tableData.insert(ObservableArray([BasicTableCellVM(labelText: "Add Section")]), atIndex: 0)
+//        }
         
         
     }
@@ -53,7 +74,7 @@ class TableViewFromObservableArrayTableViewController: UITableViewController {
     private func generateTableData() {
         for _ in 0..<5 {
             let cellVMList = ObservableArray<BasicTableCellVM>()
-            for i in 0..<5 {
+            for i in 0..<6 {
                 cellVMList.append(BasicTableCellVM(labelText: "\(i)"))
             }
             tableData.append(cellVMList)
@@ -110,22 +131,135 @@ extension TableViewFromObservableArrayTableViewController: BNDTableViewProxyData
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         
-        guard sourceIndexPath.section == destinationIndexPath.section else {
-            tableData[sourceIndexPath.section].removeAtIndex(sourceIndexPath.row)
-            tableData[destinationIndexPath.section].removeAtIndex(destinationIndexPath.row)
-            return
-        }
+        //どのやり方しても何回か移動させているとクラッシュする
+        //ObservableArrayに変更が加わると差分のBatchが生成され、それにそってdeleteRowsAtIndexPathsなどが発火されるがユーザーが動かしているから既にそのIndexPathは存在しない
+        let data = tableData[sourceIndexPath.section].removeAtIndex(sourceIndexPath.row)
+        tableData[destinationIndexPath.section].insert(data, atIndex: destinationIndexPath.row)
         
-        let section = sourceIndexPath.section
-        tableData.performBatchUpdates { (tableData) -> Void in
-            
-            tableData[section].performBatchUpdates { (data) -> Void in
-                
-                
-                
-            }
-            
-        }
+//        tableData.performBatchUpdates { (datas) -> Void in
+//            let data = datas[sourceIndexPath.section].removeAtIndex(sourceIndexPath.row)
+//            datas[destinationIndexPath.section].insert(data, atIndex: destinationIndexPath.row)
+//        }
+        
+        
+//        tableData[0].performBatchUpdates { (tableData) -> Void in
+//            tableData.append(BasicTableCellVM(labelText: "Add Row"))
+//            tableData.removeAtIndex(1)
+//            tableData.append(BasicTableCellVM(labelText: "Add Row2"))
+//            tableData.removeAtIndex(0)
+//            tableData.append(BasicTableCellVM(labelText: "Add Row3"))
+//        }
+//        tableView.reloadData()
+        
+//        tableData.performBatchUpdates { sections -> Void in
+//            
+//            let targetData = sections[sourceIndexPath.section][sourceIndexPath.row]
+//            
+//            sections[sourceIndexPath.section].performBatchUpdates { (rows) -> Void in
+//                rows.removeAtIndex(sourceIndexPath.row)
+//            }
+//            
+//            sections[destinationIndexPath.section].performBatchUpdates { (rows) -> Void in
+//                rows.insert(targetData, atIndex: destinationIndexPath.row)
+//            }
+//            
+//        }
+        
+//        let targetDatas = tableData.array[sourceIndexPath.section].array.removeAtIndex(sourceIndexPath.row)
+//        tableData.array[destinationIndexPath.section].array.insert(targetDatas, atIndex: destinationIndexPath.row)
+        
+        
+//        var allSection = tableData.array
+//        var removeSection = tableData[sourceIndexPath.section].array
+//        let target = removeSection.removeAtIndex(sourceIndexPath.row)
+//        var insertSection = tableData[destinationIndexPath.section].array
+//        insertSection.insert(target, atIndex: destinationIndexPath.row)
+////        tableData[sourceIndexPath.section].array = removeSection
+////        tableData[destinationIndexPath.section].array = insertSection
+//        allSection[sourceIndexPath.section].array = removeSection
+//        allSection[destinationIndexPath.section].array = insertSection
+//        tableData.array = allSection
+        
+//        let target = tableData[sourceIndexPath.section].array.removeAtIndex(sourceIndexPath.row)
+//        tableData[destinationIndexPath.section].array.insert(target, atIndex: destinationIndexPath.row)
+        
+//        tableView.beginUpdates()
+//        var sections = tableData.array
+//        let targetData = sections[sourceIndexPath.section].array.removeAtIndex(sourceIndexPath.row)
+//        sections[destinationIndexPath.section].array.insert(targetData, atIndex: destinationIndexPath.row)
+//        tableData.array = sections
+//        tableView.endUpdates()
+        
+//        if sourceIndexPath.section == destinationIndexPath.section {
+//            
+//            var rows = tableData[sourceIndexPath.section].array
+//            let target = rows.removeAtIndex(sourceIndexPath.row)
+//            rows.insert(target, atIndex: destinationIndexPath.row)
+//            tableData[sourceIndexPath.section].array = rows
+//            
+//        }
+        
+//        let datas = tableData
+//        
+//        datas.performBatchUpdates { (sections) -> Void in
+//            let data = sections[sourceIndexPath.section].removeAtIndex(sourceIndexPath.row)
+//            sections[destinationIndexPath.section].insert(data, atIndex: destinationIndexPath.row)
+//        }
+        
+//        tableView.beginUpdates()
+//        let data = tableData[sourceIndexPath.section].removeAtIndex(sourceIndexPath.row)
+//        tableData[destinationIndexPath.section].insert(data, atIndex: destinationIndexPath.row)
+//        tableView.reloadData()
+//        tableView.endUpdates()
+        
+//        tableView.reloadData()
+        
+//        tableData[sourceIndexPath.section].performBatchUpdates { rowDatas -> Void in
+//            let data = rowDatas.removeAtIndex(sourceIndexPath.row)
+//            rowDatas.insert(data, atIndex: destinationIndexPath.row)
+//        }
+        
+//        let data = tableData[sourceIndexPath.section].removeAtIndex(sourceIndexPath.row)
+//        tableData[destinationIndexPath.section].insert(data, atIndex: destinationIndexPath.row)
+        
+        
+//        tableData[sourceIndexPath.section].performBatchUpdates { rowDatas -> Void in
+//            
+//            rowDatas.removeAtIndex(sourceIndexPath.row)
+//            rowDatas.insert(data, atIndex: destinationIndexPath.row)
+//            
+//        }
+        
+//        tableView.reloadData()
+        
+        
+        
+//        guard sourceIndexPath.section == destinationIndexPath.section else {
+//            let data = tableData[sourceIndexPath.section][sourceIndexPath.row]
+//            tableData[destinationIndexPath.section].insert(data, atIndex: sourceIndexPath.row)
+//            return
+//        }
+//        
+//        print("sourceIndexPath: \(sourceIndexPath.row)")
+//        print("destinationIndexPath: \(destinationIndexPath.row)")
+//        let section = sourceIndexPath.section
+//        tableData[section].performBatchUpdates { rowData -> Void in
+//            let data = rowData[sourceIndexPath.row]
+//            rowData.removeAtIndex(sourceIndexPath.row)
+//            rowData.insert(data, atIndex: destinationIndexPath.row)
+//        }
+        
+//        tableData.performBatchUpdates { (tableData) -> Void in
+//            
+//            tableData[section].performBatchUpdates { (data) -> Void in
+//                
+//                let addData = data[sourceIndexPath.row]
+//                data.removeAtIndex(sourceIndexPath.row)
+//                data.insert(addData, atIndex: destinationIndexPath.row)
+//                
+//            }
+//            
+//        }
     }
     
     //アニメーションせず一括でreloadDataにするか
@@ -140,7 +274,7 @@ extension TableViewFromObservableArrayTableViewController: BNDTableViewProxyData
     
     //Sectionが更新された時のアニメーション
     func tableView(tableView: UITableView, animationForRowInSections sections: Set<Int>) -> UITableViewRowAnimation {
-        return .Left
+        return .Bottom
     }
     
 }

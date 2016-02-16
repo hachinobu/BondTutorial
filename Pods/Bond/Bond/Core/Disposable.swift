@@ -92,7 +92,7 @@ public final class SerialDisposable: DisposableType {
 public final class CompositeDisposable: DisposableType {
   
   public private(set) var isDisposed: Bool = false
-  public var disposables: [DisposableType] = []
+  private var disposables: [DisposableType] = []
   private let lock = NSRecursiveLock(name: "com.swift-bond.Bond.CompositeDisposable")
   
   public convenience init() {
@@ -103,10 +103,6 @@ public final class CompositeDisposable: DisposableType {
     self.disposables = disposables
   }
   
-    public func enableDisposableCount() -> Int {
-        return disposables.filter { !$0.isDisposed }.count
-    }
-    
   public func addDisposable(disposable: DisposableType) {
     lock.lock()
     if isDisposed {
