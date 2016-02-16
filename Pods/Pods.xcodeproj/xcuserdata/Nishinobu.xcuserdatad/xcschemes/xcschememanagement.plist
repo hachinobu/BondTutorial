@@ -12,21 +12,10 @@
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>3F5D31E84F4A4643D60EA053C390CB25</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80076C510C29F960587E43C0597ECBD5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
