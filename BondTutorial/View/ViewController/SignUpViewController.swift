@@ -25,34 +25,31 @@ class SignUpViewController: UIViewController {
         setupBind()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     private func setupBind() {
         
         signUpVM.loginID.bidirectionalBindTo(loginIDTextField.bnd_text)
         signUpVM.password.bidirectionalBindTo(passwordTextField.bnd_text)
         signUpVM.passwordConfirmation.bidirectionalBindTo(passwordConfirmationTextField.bnd_text)
         signUpVM.isAgreement.bidirectionalBindTo(agreementSwitch.bnd_on)
-        signUpVM.signUpViewStateInfo.observe { [unowned self] (buttonEnabled, buttonAlpha, warningMessage) -> Void in
-            self.warningLabel.text = warningMessage
-            self.signUpButton.enabled = buttonEnabled
-            self.signUpButton.alpha = buttonAlpha
+        
+        signUpVM.signUpViewStateInfo.observe { [weak self] (buttonEnabled, buttonAlpha, warningMessage) -> Void in
+            self?.warningLabel.text = warningMessage
+            self?.signUpButton.enabled = buttonEnabled
+            self?.signUpButton.alpha = buttonAlpha
         }
         
         signUpVM.isLoadingViewHidden.bindTo(loadingIndicator.bnd_hidden)
         signUpVM.isLoadingViewAnimate.bindTo(loadingIndicator.bnd_animating)
         
-        signUpButton.bnd_controlEvent.filter { $0 == .TouchUpInside }.observe { [unowned self] (event) -> Void in
-            self.signUpVM.signUp { (loginID, pw) -> Void in
-                
-                let alertController = UIAlertController(title: "メッセージ", message: "loginID:\(loginID)\npasswoed:\(pw)", preferredStyle: .Alert)
-                let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertController.addAction(action)
-                self.navigationController?.presentViewController(alertController, animated: true, completion: nil)
-                
-            }
+        signUpButton.bnd_controlEvent.filter { $0 == .TouchUpInside }.observe { [weak self] _ -> Void in
+            self?.signUpVM.signUp()
+        }
+        
+        signUpVM.finishSignUp.ignoreNil().observe { [weak self] (email, password) -> Void in
+            let alertController = UIAlertController(title: "メッセージ", message: "loginID:\(email)\npassword:\(password)", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(action)
+            self?.navigationController?.presentViewController(alertController, animated: true, completion: nil)
         }
         
     }

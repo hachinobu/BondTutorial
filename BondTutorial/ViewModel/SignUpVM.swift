@@ -14,6 +14,7 @@ class SignUpVM {
     enum RequestState {
         case None
         case Requesting
+        case Finish
     }
     
     let requestState = Observable<RequestState>(.None)
@@ -27,15 +28,29 @@ class SignUpVM {
     }
     
     var isLoadingViewHidden: EventProducer<Bool> {
-        return requestState.map { $0 == .None }
+        return requestState.map { $0 != .Requesting }
+    }
+    
+    var finishSignUp: EventProducer<(email: String, password: String)?> {
+        
+        return requestState.map { [weak self] reqState in
+            
+            guard let email = self?.loginID.value, password = self?.password.value where reqState == .Finish else {
+                return nil
+            }
+            
+            return (email, password)
+        
+        }
+        
     }
     
     var signUpViewStateInfo: EventProducer<(buttonEnabled: Bool, buttonAlpha: CGFloat, warningMessage: String)> {
         
         return combineLatest(requestState, loginID, password, passwordConfirmation, isAgreement).map { (reqState, loginID, password, passwordConfirmation, isAgreement) in
             
-            guard let loginID = loginID, password = password, passwordConfirmation = passwordConfirmation where reqState == .None else {
-                return (false, 0.5,"")
+            guard let loginID = loginID, password = password, passwordConfirmation = passwordConfirmation where reqState != .Requesting else {
+                return (false, 0.5, "")
             }
             
             if loginID.isEmpty || password.isEmpty || passwordConfirmation.isEmpty {
@@ -56,15 +71,14 @@ class SignUpVM {
         
     }
     
-    func signUp(resultHandler: ((loginID: String, pw: String) -> Void)) {
+    func signUp() {
         
         requestState.next(.Requesting)
         let delay = 1.0 * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         
         dispatch_after(time, dispatch_get_main_queue()) { [unowned self] in
-            resultHandler(loginID: self.loginID.value!, pw: self.password.value!)
-            self.requestState.next(.None)
+            self.requestState.next(.Finish)
         }
         
     }
