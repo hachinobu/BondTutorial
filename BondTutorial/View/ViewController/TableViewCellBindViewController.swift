@@ -48,7 +48,7 @@ class TableViewCellBindViewController: UITableViewController {
         
         let vm = tableData[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("TextInputCell", forIndexPath: indexPath) as! TextInputTableCell
-        vm.itemLabelText.bidirectionalBindTo(cell.itemLabel.bnd_text).disposeIn(cell.bnd_bag)
+        vm.itemLabelText.bindTo(cell.itemLabel.bnd_text).disposeIn(cell.bnd_bag)
         vm.inputText.bidirectionalBindTo(cell.itemTextField.bnd_text).disposeIn(cell.bnd_bag)
         
         return cell
